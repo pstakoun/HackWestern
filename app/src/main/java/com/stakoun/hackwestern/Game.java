@@ -13,19 +13,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
 public class Game
 {
     private GameActivity ga;
-    private CompassSensor cs;
     private SocketTask st;
     private LocationManager lm;
 
     public Game(GameActivity ga)
     {
         this.ga = ga;
-
-        cs = new CompassSensor(ga);
+        CompassActivity ca = new CompassActivity(this.ga);
+        Intent intent = new Intent(this.ga, CompassActivity.class);
+        ca.startActivity(intent);
 
         st = new SocketTask();
         st.setGame(this);
