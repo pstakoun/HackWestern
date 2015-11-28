@@ -56,7 +56,7 @@ class SocketTask extends AsyncTask<Void, Void, Void>
             while ((line = in.readLine()) != "exit") {
                 if (line == null)
                     continue;
-                if (line.equals("longitude"))
+                else if (line.equals("longitude"))
                     out.println(game.getLocation().getLongitude());
                 else if (line.equals("latitude"))
                     out.println(game.getLocation().getLatitude());
