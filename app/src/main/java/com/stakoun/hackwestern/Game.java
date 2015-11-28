@@ -22,8 +22,17 @@ public class Game
             socket = new Socket("hackwestern-kshen3778.c9users.io", 8080);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        } catch (IOException e) {
-            Log.e("IOException", e.getMessage());
+            listen();
+        } catch (Exception e) {
+            Log.e("Socket", "error");
+        }
+    }
+
+    private void listen() throws IOException
+    {
+        String line;
+        while ((line = in.readLine()) != "exit") {
+            out.println("test");
         }
     }
 
