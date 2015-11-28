@@ -16,29 +16,19 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Join Game"
-        android:id="@+id/join_game_button"
-        android:layout_alignTop="@+id/create_game_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="joinGame" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Game"
-        android:id="@+id/create_game_button"
+        android:text="Play Game"
+        android:id="@+id/play_button"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="createGame" />
+        android:onClick="playGame" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/game_id"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Game ID" />
+        android:hint="Game ID"
+        android:layout_alignTop="@+id/play_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

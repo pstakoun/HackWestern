@@ -14,7 +14,7 @@ public class GameActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         Intent intent = getIntent();
-        game = Game.fromId(intent.getStringExtra("id"));
+        game = new Game(intent.getStringExtra("id"));
     }
 
 }

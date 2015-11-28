@@ -15,20 +15,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
     }
 
-    public void joinGame(View v)
+    public void playGame(View v)
     {
         String id = ((EditText) findViewById(R.id.game_id)).getText().toString();
-        if (Game.fromId(id) != null) {
-            Intent intent = new Intent(this, GameActivity.class);
-            intent.putExtra("id", id);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    public void createGame(View v)
-    {
-
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+        finish();
     }
 
 }

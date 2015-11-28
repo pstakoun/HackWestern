@@ -18,11 +18,6 @@ public class Game
         (new SocketTask()).execute();
     }
 
-    public static Game fromId(String id)
-    {
-        return new Game(id);
-    }
-
 }
 
 class SocketTask extends AsyncTask<Void, Void, Void>
@@ -34,12 +29,13 @@ class SocketTask extends AsyncTask<Void, Void, Void>
     @Override
     public Void doInBackground(Void... voids) {
         try {
-            socket = new Socket("hackwestern-kshen3778.c9users.io", 8080);
+            socket = new Socket("hackwestern-kshen3778.c9.io", 8080);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line;
-            while ((line = in.readLine()) != null) {
-                Log.d("IN", line);
+            while ((line = in.readLine()) != "exit") {
+                if (line != null)
+                    Log.d("IN", line);
                 out.println("test");
             }
         } catch (Exception e) {
