@@ -2,7 +2,6 @@ package com.stakoun.hackwestern;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -22,10 +21,6 @@ public class Game
     public Game(GameActivity ga)
     {
         this.ga = ga;
-        CompassActivity ca = new CompassActivity(this.ga);
-        Intent intent = new Intent(this.ga, CompassActivity.class);
-        ca.startActivity(intent);
-
         st = new SocketTask();
         st.setGame(this);
         lm = (LocationManager) ga.getSystemService(Context.LOCATION_SERVICE);
