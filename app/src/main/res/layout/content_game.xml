@@ -18,5 +18,5 @@
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_2"/>/>
+        android:src="@drawable/ic_arrow_upward_white_48px"/>/>
 </RelativeLayout>
