@@ -14,21 +14,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class Game
 {
     private GameActivity ga;
+    private CompassSensor cs;
     private SocketTask st;
     private LocationManager lm;
 
@@ -36,8 +25,7 @@ public class Game
     {
         this.ga = ga;
 
-        Intent intent = new Intent(ga, CompassActivity.class);
-        ga.startActivity(intent);
+        cs = new CompassSensor(ga);
 
         st = new SocketTask();
         st.setGame(this);

@@ -16,7 +16,7 @@ import android.widget.TextView;
  * Created by Marcel on 2015-11-28.
  */
 public class CompassSensor implements SensorEventListener {
-
+    private GameActivity ga;
     // define the display assembly compass picture
     private ImageView image;
 
@@ -31,10 +31,15 @@ public class CompassSensor implements SensorEventListener {
     Sensor accelerometer;
     Sensor magnetometer;
 
+    public CompassSensor(GameActivity ga)
+    {
+        this.ga = ga;
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        tvHeading = (TextView) findViewById(R.id.tvHeading);
+        tvHeading = (TextView) ga.findViewById(R.id.tvHeading);
         if (tvHeading == null)
             return;
         // get the angle around the z-axis rotated
