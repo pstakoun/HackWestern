@@ -18,17 +18,8 @@
         android:layout_height="wrap_content"
         android:text="Play Game"
         android:id="@+id/play_button"
+        android:onClick="playGame"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="playGame" />
+        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/game_id"
-        android:hint="Game ID"
-        android:layout_alignTop="@+id/play_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>

@@ -1,7 +1,6 @@
 package com.stakoun.hackwestern;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,12 +9,16 @@ import java.net.Socket;
 
 public class Game
 {
-    private String id;
-
-    public Game(String id)
+    public Game()
     {
-        this.id = id;
-        (new SocketTask()).execute();
+        SocketTask st = new SocketTask();
+        st.setGame(this);
+        st.execute();
+    }
+
+    public String getLocation()
+    {
+        return "";
     }
 
 }
@@ -23,25 +26,29 @@ public class Game
 class SocketTask extends AsyncTask<Void, Void, Void>
 {
     private Socket socket;
-    PrintWriter out;
-    BufferedReader in;
+    private PrintWriter out;
+    private BufferedReader in;
+    private Game game;
 
     @Override
     public Void doInBackground(Void... voids) {
         try {
-            socket = new Socket("hackwestern-kshen3778.c9.io", 8080);
+            socket = new Socket("52.24.241.238", 8080);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out.println("connect");
             String line;
             while ((line = in.readLine()) != "exit") {
-                if (line != null)
-                    Log.d("IN", line);
-                out.println("test");
+                out.println("location " + game.getLocation());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
 }
