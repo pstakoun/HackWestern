@@ -2,6 +2,7 @@ package com.stakoun.hackwestern;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -13,6 +14,18 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class Game
 {
     private GameActivity ga;
@@ -22,6 +35,10 @@ public class Game
     public Game(GameActivity ga)
     {
         this.ga = ga;
+
+        Intent intent = new Intent(ga, CompassActivity.class);
+        ga.startActivity(intent);
+
         st = new SocketTask();
         st.setGame(this);
         lm = (LocationManager) ga.getSystemService(Context.LOCATION_SERVICE);
