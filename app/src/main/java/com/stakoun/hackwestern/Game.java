@@ -19,7 +19,8 @@ public class Game
     private SocketTask st;
     private LocationManager lm;
 
-    public Game(GameActivity ga) {
+    public Game(GameActivity ga)
+    {
         this.ga = ga;
         st = new SocketTask();
         st.setGame(this);
@@ -27,7 +28,8 @@ public class Game
         st.execute();
     }
 
-    public Location getLocation() {
+    public Location getLocation()
+    {
         if (ActivityCompat.checkSelfPermission(ga, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
@@ -44,7 +46,8 @@ class SocketTask extends AsyncTask<Void, Void, Void>
     private Game game;
 
     @Override
-    public Void doInBackground(Void... voids) {
+    public Void doInBackground(Void... voids)
+    {
         try {
             socket = new Socket("52.24.241.238", 8080);
             out = new PrintWriter(socket.getOutputStream(), true);
