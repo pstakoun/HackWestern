@@ -25,12 +25,13 @@ public class MainActivity extends AppCompatActivity
         GetTypeTask gtt = new GetTypeTask();
         gtt.execute();
         String s = gtt.getType();
-
-        if (s == "assassin") {
+        if (s == null)
+            return;
+        if (s.equals("assassin")) {
             Intent intent = new Intent(this, AssassinActivity.class);
             startActivity(intent);
             finish();
-        } else if (s == "victim") {
+        } else if (s.equals("victim")) {
             Intent intent = new Intent(this, VictimActivity.class);
             startActivity(intent);
             finish();
