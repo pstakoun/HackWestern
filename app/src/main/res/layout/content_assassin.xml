@@ -10,21 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.stakoun.hackwestern.GameActivity"
-    tools:showIn="@layout/activity_game">
-    <TextView
-        android:id="@+id/tvHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Heading: 0.0" />
+    tools:showIn="@layout/activity_assassin">
 
     <ImageView
+        android:id="@+id/pointer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pointer"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:src="@drawable/ic_arrow_upward_white_48px"/>/>
 </RelativeLayout>
