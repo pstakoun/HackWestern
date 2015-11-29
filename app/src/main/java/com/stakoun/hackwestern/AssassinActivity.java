@@ -52,6 +52,11 @@ public class AssassinActivity extends Activity implements SensorEventListener {
         // get the angle around the z-axis rotated
         float degree = Math.round(event.values[0]);
 
+        degree += SocketTask.diffAngle;
+        if(degree>360){
+            degree -= 360;
+        }
+
         tvHeading.setText("Heading: " + Float.toString(degree) + " degrees");
 
         // create a rotation animation (reverse turn degree degrees)

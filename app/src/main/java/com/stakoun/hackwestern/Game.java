@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -37,6 +38,7 @@ public class Game
         if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
+        Log.d("debug", "Loc check failed");
         return null;
     }
 
@@ -63,6 +65,7 @@ class SocketTask extends AsyncTask<Void, Void, Void>
     private PrintWriter out;
     private BufferedReader in;
     private Game game;
+    public static float diffAngle = 0f;
 
     @Override
     public Void doInBackground(Void... voids)
@@ -87,7 +90,7 @@ class SocketTask extends AsyncTask<Void, Void, Void>
                 else if (line.equals("hurt"))
                     game.hurt();
                 else if (line.startsWith("angle "))
-                    game.setCompassAngle(Double.parseDouble(line.split(" ")[1]));
+                    diffAngle = Float.parseFloat(line.split(" ")[1]);
                 else
                     out.println("");
             }
