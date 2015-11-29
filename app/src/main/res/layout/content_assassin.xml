@@ -18,5 +18,5 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_arrow_upward_white_48px"/>/>
+        android:src="@drawable/ic_arrow_upward_white_48px" />
 </RelativeLayout>

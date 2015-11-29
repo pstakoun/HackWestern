@@ -18,6 +18,7 @@ public class Game
     private Activity activity;
     private SocketTask st;
     private LocationManager lm;
+    private int health;
 
     public Game(Activity activity)
     {
@@ -34,6 +35,16 @@ public class Game
             return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
         return null;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void hurt() {
+        health -= 10;
+        if (health < 0)
+            health = 0;
     }
 
 }
@@ -60,6 +71,12 @@ class SocketTask extends AsyncTask<Void, Void, Void>
                     out.println(game.getLocation().getLongitude());
                 else if (line.equals("latitude"))
                     out.println(game.getLocation().getLatitude());
+                else if (line.equals("health"))
+                    out.println(game.getHealth());
+                else if (line.equals("hurt"))
+                    game.hurt();
+                else
+                    out.println("");
             }
         } catch (Exception e) {
             e.printStackTrace();

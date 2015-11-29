@@ -12,11 +12,12 @@
     tools:context="com.stakoun.hackwestern.VictimActivity"
     tools:showIn="@layout/activity_victim">
 
-    <ImageView
-        android:id="@+id/pointer"
+    <TextView
+        android:id="@+id/health"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_arrow_upward_white_48px" />/>
+        android:text="100%"
+        android:textSize="64sp" />
 </RelativeLayout>
