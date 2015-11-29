@@ -1,6 +1,7 @@
 package com.stakoun.hackwestern;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -14,22 +15,22 @@ import java.io.PrintWriter;
 import java.net.Socket;
 public class Game
 {
-    private GameActivity ga;
+    private Activity activity;
     private SocketTask st;
     private LocationManager lm;
 
-    public Game(GameActivity ga)
+    public Game(Activity activity)
     {
-        this.ga = ga;
+        this.activity = activity;
         st = new SocketTask();
         st.setGame(this);
-        lm = (LocationManager) ga.getSystemService(Context.LOCATION_SERVICE);
+        lm = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
         st.execute();
     }
 
     public Location getLocation()
     {
-        if (ActivityCompat.checkSelfPermission(ga, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         }
         return null;

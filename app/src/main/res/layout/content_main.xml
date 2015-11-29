@@ -13,13 +13,14 @@
     tools:showIn="@layout/activity_main">
 
     <Button
+        android:id="@+id/play_button"
         style="?android:attr/colorButtonNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Game"
-        android:id="@+id/play_button"
-        android:onClick="playGame"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:onClick="playGame"
+        android:text="Play Game"
+        android:textSize="32sp" />
 
 </RelativeLayout>

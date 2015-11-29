@@ -24,10 +24,16 @@ public class MainActivity extends AppCompatActivity
     {
         GetTypeTask gtt = new GetTypeTask();
         gtt.execute();
+        postponeEnterTransition();
+        try {
+            gtt.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String s = gtt.getType();
         if (s == null)
             return;
-        if (s.equals("assassin")) {
+        else if (s.equals("assassin")) {
             Intent intent = new Intent(this, AssassinActivity.class);
             startActivity(intent);
             finish();
