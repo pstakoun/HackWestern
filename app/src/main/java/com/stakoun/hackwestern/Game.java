@@ -8,6 +8,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -19,10 +20,12 @@ public class Game
     private SocketTask st;
     private LocationManager lm;
     private int health;
+    private double compassAngle;
 
     public Game(Activity activity)
     {
         this.activity = activity;
+        health = 100;
         st = new SocketTask();
         st.setGame(this);
         lm = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
@@ -42,9 +45,14 @@ public class Game
     }
 
     public void hurt() {
-        health -= 10;
+        health -= 1;
         if (health < 0)
             health = 0;
+        ((TextView) activity.findViewById(R.id.health)).setText(health + "%");
+    }
+
+    public void setCompassAngle(double d) {
+        compassAngle = d;
     }
 
 }
@@ -64,9 +72,12 @@ class SocketTask extends AsyncTask<Void, Void, Void>
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line;
+            boolean cooldown = false;
             while ((line = in.readLine()) != "exit") {
                 if (line == null)
                     continue;
+                else if (line.equals("ping"))
+                    out.println("pong");
                 else if (line.equals("longitude"))
                     out.println(game.getLocation().getLongitude());
                 else if (line.equals("latitude"))
@@ -75,6 +86,8 @@ class SocketTask extends AsyncTask<Void, Void, Void>
                     out.println(game.getHealth());
                 else if (line.equals("hurt"))
                     game.hurt();
+                else if (line.startsWith("angle "))
+                    game.setCompassAngle(Double.parseDouble(line.split(" ")[1]));
                 else
                     out.println("");
             }
